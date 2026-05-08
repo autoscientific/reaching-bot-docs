@@ -5,6 +5,7 @@ User documentation for ReachingBot and the ReachingBot Device Manager.
 ## Contents
 
 - [Getting Started](getting-started.md) — installation, hardware setup, drivers
+- [Downloads](downloads.md) — RBDM installers and version history
 - [Pellet Detection](pellet-detection.md) — configuring the camera-based pellet detector
 - [Outcome Classification](outcome-classification.md) — how the ML video classifier works and how to use custom DeepLabCut models
 - [Video Recording Modes](video-recording-modes.md) — segmented vs continuous capture

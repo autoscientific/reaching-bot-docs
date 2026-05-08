@@ -2,7 +2,7 @@
 
 ### Installation of ReachingBot Device Manager
 
-A link to the latest ReachingBot device manager software can be downloaded and installed from the [Downloads Page](https://www.notion.so/Downloads-2d33df1f8acd4d5b9f688063dc2d0fa3?pvs=21).
+A link to the latest ReachingBot device manager software can be downloaded and installed from the [Downloads Page](downloads.md).
 
 Follow the on-screen instructions until the desktop application is installed. Windows and Mac OSX installers are available. Please note that the Mac OSX installer is not backwards compatible and requires firmware version 3>.
 

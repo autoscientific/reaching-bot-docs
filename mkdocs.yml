@@ -31,6 +31,7 @@ theme:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Downloads: downloads.md
   - Pellet Detection: pellet-detection.md
   - Outcome Classification: outcome-classification.md
   - Video Recording Modes: video-recording-modes.md
