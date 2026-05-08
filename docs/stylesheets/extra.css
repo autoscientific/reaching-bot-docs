@@ -14,3 +14,15 @@
   height: 100%;
   border: 0;
 }
+
+.md-header__button.md-logo img {
+  filter: invert(1);
+}
+
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color: #424242;
+  --md-primary-fg-color--light: #616161;
+  --md-primary-fg-color--dark: #212121;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffffb3;
+}
