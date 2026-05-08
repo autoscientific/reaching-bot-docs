@@ -8,7 +8,9 @@ Follow the on-screen instructions until the desktop application is installed. Wi
 
 A walkthrough of ReachingBot Device Manager can be found [here](https://youtu.be/fuWDxj7Tz7A).
 
-[https://youtu.be/fuWDxj7Tz7A](https://youtu.be/fuWDxj7Tz7A)
+<div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/fuWDxj7Tz7A" title="ReachingBot Device Manager walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 ### Connection layout
 
@@ -22,13 +24,15 @@ You can also connect your ReachingBot directly to your PC using the supplied USB
 
 Your ReachingBot may arrive disassembled for safe travel. Please screw together the components indicated by the red arrows in the image above before continuing.
 
-![rb_screw_arrow.jpg](assets/rb_screw_arrow.jpg)
+![Screws to assemble before first use](assets/rb_screw.png)
 
 ### Chamber assembly
 
 Chambers are made from clear acrylic panels that assemble together using the supplied M3 x 20 mm screws and square nuts. Use [this video](https://www.youtube.com/watch?v=szwCmlw77bg) as a visual guide on how to assemble these chambers. In order to increase the contrast between the pellets and the background from with the camera frame, a dark backdrop is also supplied, which can be inserted into the front panel.
 
-[https://www.youtube.com/watch?v=szwCmlw77bg](https://www.youtube.com/watch?v=szwCmlw77bg)
+<div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/szwCmlw77bg" title="Chamber assembly" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 The chamber remains in a fixed position relative to the dispensing unit. The dispensing unit can be moved via the guides within the aluminium base and fixed together with the clamps.
 
@@ -38,7 +42,11 @@ Note, when the dispenser is positioned in the “shaping” position, i.e. as cl
 
 Before the ReachingBot Device Manager can recognise your devices, you will first need to change the device drivers. You will only need to do this once for any given PC you chose to use with your devices. You will also only need to do this for one ReachingBot, not each one.
 
-For a visual demonstration on how to do this, watch [this YouTube video](https://www.youtube.com/watch?v=XaTmG708Mss) from the 7:20 minute mark.
+For a visual demonstration on how to do this, watch [this YouTube video](https://www.youtube.com/watch?v=XaTmG708Mss&t=440s) from the 7:20 minute mark.
+
+<div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/XaTmG708Mss?start=440" title="Driver setup walkthrough (starts at 7:20)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 1. **Download the correct drivers**
 
