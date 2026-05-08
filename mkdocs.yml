@@ -35,6 +35,7 @@ nav:
   - Pellet Detection: pellet-detection.md
   - Outcome Classification: outcome-classification.md
   - Video Recording Modes: video-recording-modes.md
+  - ReachingBot API: api.md
   - Troubleshooting: troubleshooting.md
 
 markdown_extensions:
