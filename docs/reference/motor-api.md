@@ -23,8 +23,13 @@ You start and stop the API server from the desktop application — there's no ne
        request as it arrives.
     3. To shut the servers down, click **Stop API server**.
 
-    A device serving the API reads **api** on its card and cannot run a session
-    until the server is stopped.
+    A device serving the API reads **API server running** on its card and cannot
+    run a session until the server is stopped.
+
+    <figure markdown>
+    ![Two devices serving the motor API, with the request log below them](../assets/app/devices-api-server.png)
+    <figcaption>Both devices serving the API. The log below the fleet shows each request as it arrives, tagged with the device that answered it.</figcaption>
+    </figure>
 
 === "Device Manager (legacy)"
 

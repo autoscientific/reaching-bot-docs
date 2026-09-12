@@ -6,6 +6,11 @@ connection state, and the actions you run against it.
 Open a config with **Load config** in the toolbar, or click **Open in Devices**
 after saving one in the [Configuration builder](configuration-builder.md).
 
+<figure markdown>
+![The Devices view with two ReachingBots connected and idle](../assets/app/devices-fleet.png)
+<figcaption>Two devices loaded from a config and connected. The counts above the toolbar track the fleet; each card is one ReachingBot.</figcaption>
+</figure>
+
 ## Fleet toolbar
 
 Across the top: counts of **running**, **idle** and **offline** devices, a
@@ -22,13 +27,17 @@ filter box, and the fleet-wide actions.
 
 ## Device states
 
-| State | Meaning |
+| On the card | Meaning |
 | --- | --- |
-| **unknown** | Not probed yet — use **Connect** on the card, or **Scan network** |
-| **idle** | Connected and ready to run a session |
-| **running** | A session is in progress |
-| **api** | Serving the motor API. Stop it before running sessions on this device |
-| **offline** | The device didn't respond. Check it's powered and on the network, then **Retry connection** |
+| **Not checked** | Not probed yet — use **Connect** on the card, or **Scan network** |
+| **Connecting…** | Opening the connection |
+| **Idle · ready** | Connected and ready to run a session |
+| **Session running** | A session is in progress |
+| **API server running** | Serving the motor API. Stop it before running sessions on this device |
+| **Not connected** | The device didn't respond. Check it's powered and on the network, then **Retry connection** |
+
+The counts above the toolbar summarise the same thing as **running**, **idle**
+and **offline**.
 
 Each card also shows the device's IP address (or `no IP set`) and its firmware
 version once probed (`FW 1.0.0`, or `no firmware`).
@@ -46,6 +55,11 @@ with.
 | **Time (seconds)** | `60` | Maximum session length |
 | **Detection area** | `300` to `500` pixels² | Smallest and largest pellet blob area. Presets are available for common 20 mg and 45 mg pellets |
 | **Through-beam sensor** | off | Enables the through-beam sensor on the device |
+
+<figure markdown>
+![The session parameters panel expanded](../assets/app/devices-session-parameters.png)
+<figcaption>The panel expanded. Collapsed, it summarises itself in one line — "Stops after 10 trials or 60s · 45 mg pellet, 300–500 px² · through-beam off".</figcaption>
+</figure>
 
 Whichever limit is reached first — trials or time — ends the session.
 
@@ -65,6 +79,11 @@ config, because it depends on where each device's pellet sits in frame. See
 While it runs, the card shows the animal, elapsed time against the time limit,
 and trial progress (`Trial 3/10`) as the device reports it, plus the most recent
 line of device output.
+
+<figure markdown>
+![One device running a session while the other stays idle](../assets/app/devices-session-running.png)
+<figcaption>A session running on ReachingBot1 — animal, elapsed time, trial progress and the latest line of device output — while ReachingBot2 stays idle and ready.</figcaption>
+</figure>
 
 **Stop session** ends it gracefully — the device is interrupted rather than
 killed, so the session closes down and its videos are written out.

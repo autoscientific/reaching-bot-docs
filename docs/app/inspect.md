@@ -4,6 +4,11 @@ The **Inspect** view reads the results of sessions you have already
 [downloaded](devices.md#download-videos). It only reads local files — it does
 not touch the devices, and it does not score anything.
 
+<figure markdown>
+![The Inspect view showing hits, misses, success rate and the trial table](../assets/app/inspect-results.png)
+<figcaption>A scored session: totals across the top, then the results CSV as it appears on disk, with its path underneath.</figcaption>
+</figure>
+
 ## Picking a session
 
 | Field | Notes |

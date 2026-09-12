@@ -5,6 +5,11 @@ tasks on a fleet of ReachingBots. It replaces the
 [ReachingBot Device Manager](../rbdm/getting-started.md) for everything except
 ML video scoring.
 
+<figure markdown>
+![The ReachingBot app on the Devices view](../assets/app/devices-fleet.png)
+<figcaption>The Devices view — where the app opens.</figcaption>
+</figure>
+
 It is a single window with three views:
 
 | View | What it does |

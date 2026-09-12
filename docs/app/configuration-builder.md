@@ -14,6 +14,24 @@ at the top of the page (or use the browse button) and the four steps are filled
 in from it. Re-saving keeps any per-device settings that were already in the
 file rather than resetting them to defaults.
 
+<figure markdown>
+![The Configuration builder with all four steps complete](../assets/app/config-builder.png)
+<figcaption>All four steps done. The rail on the right names the file that will be written, ticks each step off, and only then lets the config save.</figcaption>
+</figure>
+
+## Walkthrough
+
+One pass over the whole flow — from an empty builder to a saved config:
+
+<figure markdown>
+<video controls muted playsinline preload="none"
+       poster="../../assets/app/config-builder-walkthrough-poster.jpg">
+  <source src="../../assets/app/config-builder-walkthrough.mp4" type="video/mp4">
+  Your browser does not support embedded video.
+</video>
+<figcaption>Naming the study, entering the device login, scanning and adding a ReachingBot, editing its settings, adding an animal, and saving.</figcaption>
+</figure>
+
 ## Step 1 — Name the experiment
 
 | Field | Notes |
@@ -83,6 +101,11 @@ point.
 | **`y2_offset`** | `0.98` | ROI bottom edge |
 | **`x1_offset`** | `0.6` | ROI left edge as a fraction of frame width |
 | **`x2_offset`** | `0.875` | ROI right edge |
+
+<figure markdown>
+![The per-device settings editor open on a device row](../assets/app/config-device-settings.png)
+<figcaption>Settings open on ReachingBot3. In Device Manager most of these were hardcoded; here they hang off the device that has them and can be changed at any point.</figcaption>
+</figure>
 
 See [Pellet detection](../reference/pellet-detection.md) for how to choose the
 ROI, and the camera feed on the [Devices](devices.md#camera-feed) view for
