@@ -1,5 +1,9 @@
 # Outcome classification: *things to note*
 
+!!! info "Legacy application"
+    This page covers **ReachingBot Device Manager**, the legacy app. For the
+    current application see the [ReachingBot app](../app/index.md).
+
 ReachingBot Device Manager comes equipped with a machine-learning based video outcome classifier that makes a prediction of what happened during the short video snippets recorded. Currently, the possible outcomes are as follows:
 
 | **Outcome** | **Description** |
@@ -33,6 +37,6 @@ The outcome classifier depends on the integrated DeepLabCut model working well. 
 
 We cannot guarantee the models we train using DeepLabCut will track the features of rodents reliably enough for kinematic/trajectory analysis. Users are encouraged to train their own models for this purpose.
 
-![Screenshot 2024-03-29 at 21.11.26.png](assets/Screenshot_2024-03-29_at_21.11.26.png)
+![Screenshot 2024-03-29 at 21.11.26.png](../assets/Screenshot_2024-03-29_at_21.11.26.png)
 
 Please reach out to [info@autoscientific.co.uk](mailto:info@autoscientific.co.uk) if alterations need to be made and we can explore this together.
