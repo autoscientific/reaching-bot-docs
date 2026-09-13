@@ -1,5 +1,5 @@
 site_name: ReachingBot Documentation
-site_description: User documentation for ReachingBot and ReachingBot Device Manager
+site_description: User documentation for ReachingBot, the ReachingBot app and ReachingBot Device Manager
 site_url: https://autoscientific.github.io/reaching-bot-docs/
 repo_url: https://github.com/autoscientific/reaching-bot-docs
 edit_uri: edit/main/docs/
@@ -25,6 +25,8 @@ theme:
     - navigation.instant
     - navigation.tracking
     - navigation.top
+    - navigation.sections
+    - navigation.indexes
     - content.code.copy
     - content.action.edit
     - search.suggest
@@ -32,13 +34,41 @@ theme:
 
 nav:
   - Home: index.md
-  - Getting Started: getting-started.md
-  - Downloads: downloads.md
-  - Pellet Detection: pellet-detection.md
-  - Outcome Classification: outcome-classification.md
-  - Video Recording Modes: video-recording-modes.md
-  - ReachingBot API: api.md
-  - Troubleshooting: troubleshooting.md
+  - Hardware:
+      - Setup and assembly: hardware/setup.md
+      - Device drivers: hardware/drivers.md
+  - ReachingBot app:
+      - app/index.md
+      - Install: app/install.md
+      - Configuration builder: app/configuration-builder.md
+      - Devices: app/devices.md
+      - Inspect: app/inspect.md
+      - Moving from Device Manager: app/migrating.md
+  - Device Manager (legacy):
+      - rbdm/index.md
+      - Getting started: rbdm/getting-started.md
+      - Downloads: rbdm/downloads.md
+      - Outcome classification: rbdm/outcome-classification.md
+      - Troubleshooting: rbdm/troubleshooting.md
+  - Reference:
+      - Experiment config file: reference/config-file.md
+      - Pellet detection: reference/pellet-detection.md
+      - Video recording modes: reference/video-recording-modes.md
+      - Motor API: reference/motor-api.md
+
+# The pages below moved when the site was split into the app / Device Manager
+# sections. Keep these so links already shared with users don't 404.
+plugins:
+  - search
+  - redirects:
+      redirect_maps:
+        getting-started.md: hardware/setup.md
+        downloads.md: rbdm/downloads.md
+        outcome-classification.md: rbdm/outcome-classification.md
+        troubleshooting.md: rbdm/troubleshooting.md
+        pellet-detection.md: reference/pellet-detection.md
+        video-recording-modes.md: reference/video-recording-modes.md
+        api.md: reference/motor-api.md
 
 extra_css:
   - stylesheets/extra.css
