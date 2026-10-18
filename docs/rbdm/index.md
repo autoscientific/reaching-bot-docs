@@ -2,9 +2,8 @@
 
 !!! info "This is the legacy application"
     Device Manager (RBDM) is the original PySide6 desktop app. It is still
-    supported, and is currently the **only** application that performs ML video
-    scoring. For running sessions, see the
-    [ReachingBot app](../app/index.md).
+    supported, but the [ReachingBot app](../app/index.md) now covers the whole
+    workflow, scoring included, and is the one to use for new work.
 
 ## Pages
 
@@ -24,13 +23,21 @@ Shared with the ReachingBot app:
 
 ## Should I still use it?
 
-Yes, for two things:
+For most work, no — the [ReachingBot app](../app/index.md) does everything
+Device Manager does, and its [Scoring](../app/scoring.md) produces identical
+predictions.
 
-- **Video scoring.** The outcome classifier and DeepLabCut pose estimation are
-  not in the ReachingBot app.
+Three reasons remain:
+
+- **Scoring options the app leaves out** — the p-value setting, per-video
+  trajectory CSVs, the labelled-video export, and
+  [custom DeepLabCut models](outcome-classification.md#using-custom-deeplabcut-models)
+  from the config.
+- **An Intel Mac.** The ReachingBot app is Apple silicon only, and needs
+  macOS 13 or later.
 - **An in-flight study.** Changing software versions in the middle of a study is
   not advisable without first testing.
 
 The two apps read the same config files and write the same session folder
-layout, so they can be used together — see
+layout, so they can be used together or interchangeably — see
 [Moving from Device Manager](../app/migrating.md).

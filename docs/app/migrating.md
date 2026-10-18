@@ -1,7 +1,8 @@
 # Moving from Device Manager
 
-Both applications are supported, and they are designed to sit side by side: the
-ReachingBot app runs your sessions, and Device Manager scores the videos.
+The ReachingBot app now covers the whole workflow — configure, run, score,
+inspect — so Device Manager is no longer needed for a normal study. Both remain
+supported and read the same files, so you can move between them.
 
 ## Your config files still work
 
@@ -21,10 +22,14 @@ The app adds an `ip_address` key per device, which Device Manager ignores.
 | **Videos → Delete Videos On Connected Devices** | Trash button in the Devices toolbar |
 | **Display Feed** | **Feed** on a device card |
 | **Start API Server** | **Start API server** in the Devices toolbar |
-| Scoring / DeepLabCut | Not present — stays in Device Manager |
+| **Scoring** tab | [Scoring](scoring.md) |
 
 ## What is better
 
+- **Scoring without the machine-learning stack.** [Scoring](scoring.md) gives
+  identical predictions to Device Manager — same labels, keypoints and
+  confidences on the reference set — with a fraction of the install size, and
+  verified to match across macOS, Linux and Windows.
 - **Per-device settings are editable.** Motor type, shooting mode, camera FPS,
   camera view and the pellet-detection ROI are editable from each device's row
   in the Configuration builder, at any time. Device Manager hardcoded most of
@@ -38,20 +43,27 @@ The app adds an `ip_address` key per device, which Device Manager ignores.
 
 ## What is not there
 
-- **ML video scoring and DeepLabCut pose estimation.** These are the one real
-  gap, and they are deliberate — see [Scoring](index.md#scoring). Keep Device
-  Manager installed for them.
-- **Published installers.** See [Install](install.md).
+Scoring came across, but four of its options deliberately did not — the p-value
+setting (fixed at 0.95), per-video trajectory CSVs, the labelled-video export,
+and custom pose models from the config. [Scoring](scoring.md#differences-from-device-managers-scoring)
+covers each. Device Manager is still the way to reach them.
 
-## A workflow that uses both
+Two platform changes are worth knowing before you move:
 
-1. Build or open the experiment config in the ReachingBot app.
-2. Run sessions from the app's Devices view.
-3. **Download videos** from the app — they land in
-   `{VideoDirectory}/{date}/{animal}_{date}`.
-4. Score that folder in Device Manager, which writes its results CSV into it.
-5. Read the scored results back in the app's [Inspect](inspect.md) view, or in
-   Device Manager's Inspect tab.
+- **Intel Macs are not supported.** The app is Apple silicon only.
+- **macOS 13 or later** is required.
 
-Because both apps use the same directory layout and the same config, nothing has
-to be copied or converted between steps.
+Also still outstanding: **published installers** — see [Install](install.md).
+
+## The workflow, end to end
+
+1. Build or open the experiment config in the [Configuration builder](configuration-builder.md).
+2. Run sessions from [Devices](devices.md).
+3. **Download videos** — they land in `{VideoDirectory}/{date}/{animal}_{date}`.
+4. [Score](scoring.md) those sessions; predictions go into each one's results CSV.
+5. Read the totals in [Inspect](inspect.md).
+
+Device Manager is not needed at any step. If you do use it — for one of the
+scoring options above, or because a study started there — it reads and writes
+the same config and the same session folders, so nothing has to be copied or
+converted.

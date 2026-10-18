@@ -1,8 +1,11 @@
 # Outcome classification: *things to note*
 
-!!! info "Legacy application"
-    This page covers **ReachingBot Device Manager**, the legacy app. For the
-    current application see the [ReachingBot app](../app/index.md).
+!!! info "The outcomes apply to both apps"
+    The outcome definitions and the setup advice below apply to the
+    [ReachingBot app](../app/scoring.md) too — its scorer is a
+    reimplementation of this one and produces identical predictions. The
+    sections on **custom DeepLabCut models** and the **labelled-video export**
+    are Device Manager only.
 
 ReachingBot Device Manager comes equipped with a machine-learning based video outcome classifier that makes a prediction of what happened during the short video snippets recorded. Currently, the possible outcomes are as follows:
 

@@ -42,6 +42,7 @@ nav:
       - Install: app/install.md
       - Configuration builder: app/configuration-builder.md
       - Devices: app/devices.md
+      - Scoring: app/scoring.md
       - Inspect: app/inspect.md
       - Moving from Device Manager: app/migrating.md
   - Device Manager (legacy):

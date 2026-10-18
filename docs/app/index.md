@@ -1,22 +1,22 @@
 # ReachingBot app
 
 The ReachingBot app is the current desktop application for running reaching
-tasks on a fleet of ReachingBots. It replaces the
-[ReachingBot Device Manager](../rbdm/getting-started.md) for everything except
-ML video scoring.
+tasks on a fleet of ReachingBots, scoring the videos and reading the results.
+It replaces the [ReachingBot Device Manager](../rbdm/getting-started.md).
 
 <figure markdown>
 ![The ReachingBot app on the Devices view](../assets/app/devices-fleet.png)
 <figcaption>The Devices view — where the app opens.</figcaption>
 </figure>
 
-It is a single window with three views:
+It is a single window with four views:
 
 | View | What it does |
 | --- | --- |
 | [Devices](devices.md) | The fleet: connect, tune session parameters, run and stop sessions, preview the camera, download videos, update firmware, serve the motor API |
 | [Configuration builder](configuration-builder.md) | Build the experiment YAML: name the study, set device login, scan for and add ReachingBots, add animals |
-| [Inspect](inspect.md) | Read the results CSVs from sessions you have downloaded |
+| [Scoring](scoring.md) | Predict the outcome of every trial video into the session's results CSV |
+| [Inspect](inspect.md) | Read the results CSVs back as hit/miss totals and a trial table |
 
 ## What is different from Device Manager
 
@@ -27,8 +27,9 @@ It is a single window with three views:
 - **Sessions stream live.** Device output is forwarded to the app as it
   happens, with trial progress and elapsed time on the device card, rather than
   being polled.
-- **No ML scoring.** The video outcome classifier and the DeepLabCut pose
-  estimation are not part of this app — see [Scoring](#scoring) below.
+- **Scoring is built in.** The [Scoring](scoring.md) view gives the same
+  predictions as Device Manager without its machine-learning stack — see
+  [Scoring](#scoring) below.
 - **Same config files.** Both apps read and write the same experiment YAML, so
   a config made in one opens in the other. See
   [Experiment config file](../reference/config-file.md).
@@ -38,15 +39,16 @@ It is a single window with three views:
 
 ## Scoring
 
-The ML scoring pipeline is **not** part of this app. Scoring pulled in `torch`,
-`ultralytics`, `onnxruntime`, `scikit-learn`, `pandas` and `opencv` — together
-they turned a 22-package backend into a 199-package one and would have added
-gigabytes to every installer.
+The app scores videos itself, in the [Scoring](scoring.md) view, and gives
+**identical** results to Device Manager — same labels, same keypoints, same
+confidences, on the same reference set.
 
-To score videos, run the videos through
-[ReachingBot Device Manager](../rbdm/outcome-classification.md). Videos
-downloaded by the ReachingBot app land in the same directory layout, so Device
-Manager can read them.
+It does this without Device Manager's machine-learning stack (`torch`,
+`ultralytics`, `scikit-learn`, `pandas` and OpenCV), which would have added
+gigabytes to every installer. A handful of options did not come across — the
+p-value setting, trajectory CSVs, the labelled-video export, and custom pose
+models from the config. [Scoring](scoring.md#differences-from-device-managers-scoring)
+lists them.
 
 ## Getting started
 
@@ -55,3 +57,4 @@ Manager can read them.
 3. [Install the app](install.md)
 4. [Build a configuration](configuration-builder.md)
 5. [Run a session](devices.md)
+6. [Score the videos](scoring.md) and [read the results](inspect.md)

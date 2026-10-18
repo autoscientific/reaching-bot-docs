@@ -12,26 +12,25 @@ the same [config files](reference/config-file.md), and can be used together.
 
 - ### [ReachingBot app](app/index.md)
 
-    **The current app.** Run sessions, build configs, preview the camera,
-    download videos, update firmware. Available for macOS, Windows and Linux.
-
-    Does **not** do ML video scoring.
+    **The current app, and the one to use.** Build configs, run sessions,
+    download videos, score them, read the results. For macOS, Windows and
+    Linux.
 
     [Get started →](app/index.md)
 
 - ### [Device Manager (legacy)](rbdm/index.md)
 
-    **The original app.** Still supported, and still the only way to score
-    videos with the ML outcome classifier and DeepLabCut.
+    **The original app.** Still supported, and still the way to reach a few
+    scoring options the new app leaves out.
 
-    Keep it installed for scoring, or if you are mid-study.
+    Keep it if you are mid-study.
 
     [Get started →](rbdm/index.md)
 
 </div>
 
-Running sessions in the new app and scoring them in Device Manager is a
-supported workflow — see
+Both apps read the same config files and write the same session folders, so
+they can be used together or interchangeably — see
 [Moving from Device Manager](app/migrating.md).
 
 ## Start here

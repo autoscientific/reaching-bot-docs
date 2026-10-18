@@ -47,7 +47,7 @@ VideoDirectory: /path/to/project/ReachingBotVideos
 | `Animals` | Map of animal ID → paw preference (`To be determined`, `Left` or `Right`) |
 | `Devices` | Map of device hostname → the per-device block below |
 | `DownloadCSV` | When `true`, CSVs are downloaded alongside the videos |
-| `PoseEstimationModel` | `default`, or a path to a custom DeepLabCut model. Device Manager only — see [Outcome classification](../rbdm/outcome-classification.md) |
+| `PoseEstimationModel` | `default`, or a path to a custom DeepLabCut model. Read by Device Manager only — the ReachingBot app's [Scoring](../app/scoring.md) always uses its built-in model |
 | `VideoDirectory` | Where downloaded sessions are written locally |
 
 ## Per-device keys

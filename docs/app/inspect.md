@@ -33,14 +33,14 @@ success rate is hits ÷ (hits + misses), as a percentage.
 
 ## Where results come from
 
-The ReachingBot app does **not** produce the `Predicted` column — that is the ML
-outcome classifier, which is part of the legacy
-[Device Manager](../rbdm/outcome-classification.md), not this app. Inspect reads
-the CSV whoever produced it.
+Inspect only reads. The `Predicted` column it counts is written by the
+[Scoring](scoring.md) view.
 
-So a session downloaded by this app shows **This session has no results CSV yet**
-until the videos have been scored. Score them in Device Manager, which writes
-its results CSV into the same session folder, then reopen the session here.
+So a freshly downloaded session shows **This session has no results CSV yet**
+until it has been scored. Score it in [Scoring](scoring.md), then reopen it
+here. A session scored in
+[Device Manager](../rbdm/outcome-classification.md) reads the same way — both
+write the same CSV into the same session folder.
 
 See [Outcome classification](../rbdm/outcome-classification.md) for what the
 outcomes mean.
