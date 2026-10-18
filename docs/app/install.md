@@ -1,12 +1,7 @@
 # Installing the ReachingBot app
 
-!!! warning "Installer links are not published yet"
-    At the time of writing there is no published release of the ReachingBot app,
-    and the source repository is private — so this page cannot yet link to
-    installers the way the [Device Manager downloads page](../rbdm/downloads.md)
-    does. Until builds are hosted publicly (the Device Manager installers are
-    served from a CloudFront distribution), ask
-    [info@autoscientific.co.uk](mailto:info@autoscientific.co.uk) for a build.
+Installers are listed on the [Downloads](downloads.md) page, which the release
+build updates itself.
 
 Nothing else needs installing alongside the app. The Python backend is frozen
 into the bundle, so an installed copy needs neither Python nor `uv` on the

@@ -40,6 +40,7 @@ nav:
   - ReachingBot app:
       - app/index.md
       - Install: app/install.md
+      - Downloads: app/downloads.md
       - Configuration builder: app/configuration-builder.md
       - Devices: app/devices.md
       - Scoring: app/scoring.md
@@ -70,6 +71,11 @@ plugins:
         pellet-detection.md: reference/pellet-detection.md
         video-recording-modes.md: reference/video-recording-modes.md
         api.md: reference/motor-api.md
+
+# Renders data/app-releases.yml into the app downloads page, so a release
+# changes structured data rather than Markdown.
+hooks:
+  - hooks/releases.py
 
 extra_css:
   - stylesheets/extra.css

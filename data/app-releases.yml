@@ -1,0 +1,23 @@
+# Installer downloads for the ReachingBot app.
+#
+# The release workflow in autoscientific/reaching-bot-app appends an entry here
+# when it publishes a tag, so this file — not the Markdown — is the thing that
+# changes per release. hooks/releases.py renders it into docs/app/downloads.md.
+#
+# base_url is the CloudFront distribution the installers are served from.
+# Each release's files are expected at {base_url}/{version}/{filename}.
+
+base_url: https://d2k8b59n1pj325.cloudfront.net/app
+
+# Newest first. The release job inserts at the top.
+releases: []
+# - version: 0.0.0
+#   date: 2026-01-01
+#   notes: First public build with in-app scoring.
+#   files:
+#     - label: macOS (Apple silicon)
+#       filename: ReachingBot_0.0.0_aarch64.dmg
+#       size: 54 MB
+#     - label: Windows installer
+#       filename: ReachingBot_0.0.0_x64-setup.exe
+#       size: 95 MB
