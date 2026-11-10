@@ -2,23 +2,40 @@
 
 *Continuous video recording is an experimental release of the software and may be unstable, please report any issues to* [info@autoscientific.co.uk](mailto:info@autoscientific.co.uk).
 
+Both applications support the two modes, and both store the choice in the same
+`shooting_mode` key of the [experiment config](config-file.md).
+
 As of RBDM 2.5.1 and firmware version 2.5.0-pre-release, we have released a new mode of video acquisition, in addition to ‘segmented’ mode.
 
-With the above versions of the software, “continuous” video capture can be enabled by adding the following line to the config file of each device you’d like to have shoot in this mode:
+## Setting the mode
 
-```yaml
-Devices:
-  ReachingBot1:
-    camera_position: Same side as motor
-    x1_offset: 0.6
-    x2_offset: 0.875
-    y1_offset: 0.61
-    y2_offset: 0.98
-    fps: 100
-    shooting_mode: continuous
-```
+=== "ReachingBot app"
 
-By default, when new config files are created with RBDM 2.5.1, `shooting_mode` is added, and `segmented` is specified.
+    **Shooting mode** is a per-device setting in the
+    [Configuration builder](../app/configuration-builder.md#per-device-settings):
+    open a device's row and pick `segmented` or `continuous`. New devices default
+    to `segmented`.
+
+=== "Device Manager (legacy)"
+
+    Add the following line to the config file of each device you’d like to have
+    shoot in this mode:
+
+    ```yaml
+    Devices:
+      ReachingBot1:
+        camera_position: Same side as motor
+        x1_offset: 0.6
+        x2_offset: 0.875
+        y1_offset: 0.61
+        y2_offset: 0.98
+        fps: 100
+        shooting_mode: continuous
+    ```
+
+    By default, when new config files are created with RBDM 2.5.1, `shooting_mode` is added, and `segmented` is specified.
+
+## The two modes
 
 **Segmented:** Only the frames captured before and after the pellet is displaced from the pellet are encoded to video.
 

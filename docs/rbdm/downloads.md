@@ -1,5 +1,11 @@
 # Downloads
 
+!!! info "Legacy application"
+    This page covers **ReachingBot Device Manager**, the legacy app. For the
+    current application see the [ReachingBot app](../app/index.md).
+
+Looking for the current application instead? See [Installing the ReachingBot app](../app/install.md).
+
 *Note: Please ensure the version of RBDM you have is compatible with the firmware version. Changing software versions in the middle of a study is not advisable without first testing.*
 
 ## ReachingBot Device Manager Downloads:
