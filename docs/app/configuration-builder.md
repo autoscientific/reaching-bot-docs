@@ -10,9 +10,25 @@ rail on the right that shows the file being built, ticks each step off as it is
 completed, and holds the **Save config** button.
 
 To edit an existing study instead of starting fresh, put its path in the field
-at the top of the page (or use the browse button) and the four steps are filled
-in from it. Re-saving keeps any per-device settings that were already in the
-file rather than resetting them to defaults.
+at the top of the page (or use the browse button) and click **Load**; the four
+steps are filled in from it. Re-saving keeps any per-device settings that were
+already in the file rather than resetting them to defaults.
+
+The app remembers the config you last saved or loaded and reopens on it the next
+time it starts, in every view. If that file has since been moved or deleted, the
+app quietly forgets it and starts empty.
+
+**New config** clears every step and unloads the current config from the whole
+app, so you can start a fresh study. It asks first if anything unsaved would be
+lost. The YAML file on disk is left as it is.
+
+!!! note "The config is locked while a device is busy"
+    While a session, the motor API server, servo calibration or the camera feed
+    is running, **Load**, **New config** and **Save config** are disabled, and the
+    page says what is running, with a link to the Devices view where you can stop
+    it. Swapping the config reloads the fleet, which would leave whatever is
+    running with no way to stop it from the app. You can still edit the form in
+    the meantime.
 
 <figure markdown>
 ![The Configuration builder with all four steps complete](../assets/app/config-builder.png)
@@ -56,29 +72,31 @@ One login is stored per config and applied to every device in it.
 
 ### Scanning
 
-**Scan for devices** looks for ReachingBots advertising themselves over mDNS. It
-tries the standard hostnames — `ReachingBot`, then `ReachingBot1` through
-`ReachingBot10` — and lists the ones that answer. A name that is not in use
-takes a few seconds to time out, so a full scan is not instant; **Stop scan**
-ends it between probes.
+**Scan for devices** listens on the local network for about five seconds for
+ReachingBots announcing themselves over mDNS, and lists each one it hears with
+its IP address. Hover over an entry to see its model and serial number.
+**Stop scan** ends the scan early. A device that is already in the config is
+shown as **added** and cannot be picked again.
 
-Clicking a found device fills in the form below it.
+Each ReachingBot's hostname comes from its serial number, in the form
+`reachingbot-` followed by eight characters, e.g. `reachingbot-461d06b2`.
+Clicking a found device fills that name into the form below it.
 
-### Renaming a device
+!!! note
+    A device only shows up in a scan if its firmware announces itself on the
+    network. If a device you know is switched on does not appear, add it by
+    hand instead.
 
-With a found device selected, pick a new hostname under **Rename … to** and
-click **Rename**. This needs the device login from step 2.
-
-The device is renamed and then **rebooted**, so it will drop off the network
-until the reboot completes — expect it to disappear from a scan for a minute or
-so.
+Earlier versions of the app could rename a device to `ReachingBot1`–`10` from
+here. That option has gone: hostnames now follow the serial number, which is how
+each device is identified.
 
 ### Adding a device by hand
 
 | Field | Notes |
 | --- | --- |
-| **Name** | The device hostname, e.g. `ReachingBot1` |
-| **IP address** | Optional. Leave blank to reach the device by hostname |
+| **Name** | The device hostname, e.g. `reachingbot-461d06b2` |
+| **Host or IP address** | Optional. Leave it blank to reach the device by its network name, `<name>.local` (the field shows this as you type). This keeps working if the device's IP address changes. Enter an IP address only if `.local` names do not work on your network |
 | **Camera position** | `Opposite motor` (default) or `Same side as motor` |
 
 Added devices appear in a table showing **Device**, **Camera** and
@@ -93,7 +111,7 @@ point.
 
 | Setting | Default | Notes |
 | --- | --- | --- |
-| **Motor type** | `MG996R` | Or `MG90S` for the legacy motors. Sets the servo pulse-width limits |
+| **Motor type** | `MG996R` | Or `MG90S` for the legacy motors. Sets the default servo positions for a device that has not been [calibrated](devices.md#servo-calibration) |
 | **Shooting mode** | `segmented` | Or `continuous` — see [Video recording modes](../reference/video-recording-modes.md) |
 | **Camera FPS** | `100` | Changing this with `continuous` mode is not recommended |
 | **Camera view** | `Opposite motor` | Flips the frame when the camera is on the motor side |
@@ -130,4 +148,5 @@ written, and the save is refused unless there is at least one device **and** at
 least one animal.
 
 Once saved, **Open in Devices** takes you straight to the fleet with that config
-loaded.
+loaded. Saving also updates the Devices, Scoring and Inspect views, so they
+always work from the latest version of the file.

@@ -13,7 +13,7 @@ It is a single window with four views:
 
 | View | What it does |
 | --- | --- |
-| [Devices](devices.md) | The fleet: connect, tune session parameters, run and stop sessions, preview the camera, download videos, update firmware, serve the motor API |
+| [Devices](devices.md) | The fleet: connect, tune session parameters, run and stop sessions, preview the camera, calibrate the servo, download videos, update firmware, serve the motor API |
 | [Configuration builder](configuration-builder.md) | Build the experiment YAML: name the study, set device login, scan for and add ReachingBots, add animals |
 | [Scoring](scoring.md) | Predict the outcome of every trial video into the session's results CSV |
 | [Inspect](inspect.md) | Read the results CSVs back as hit/miss totals and a trial table |

@@ -16,7 +16,8 @@ Before installing, make sure the hardware is assembled and the
 | --- | --- | --- |
 | macOS, Apple silicon | `.dmg` | **macOS 13 or later.** Intel Macs are not supported |
 | Windows | `.msi`, or the `.exe` installer | |
-| Linux | `.deb`, or the `.AppImage` | Built on Ubuntu 22.04, which sets the oldest glibc — and so the oldest distribution — they will run on |
+| Linux, x86-64 | `.deb`, or the `.AppImage` | Built on Ubuntu 22.04, which sets the oldest glibc — and so the oldest distribution — they will run on |
+| Linux, arm64 | `.deb`, or the `.AppImage` | For Raspberry Pi 5 and other 64-bit Arm machines running Ubuntu 22.04 or later |
 
 !!! warning "Apple silicon only"
     There is no Intel Mac build. Both the macOS 13 minimum and the dropped

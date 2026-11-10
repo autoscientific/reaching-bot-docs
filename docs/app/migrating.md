@@ -39,7 +39,13 @@ The app adds an `ip_address` key per device, which Device Manager ignores.
 - **Stoppable long operations.** Network scans, sessions, downloads and the API
   server can all be stopped from the UI.
 - **Per-file download progress**, rather than a single wait.
-- **Linux builds**, alongside macOS and Windows.
+- **Linux builds**, for both x86-64 and arm64 (e.g. Raspberry Pi 5), alongside
+  macOS and Windows.
+- **Servo calibration** from the app. Each device's rest and present positions
+  can be set and saved on the device — see
+  [Servo calibration](devices.md#servo-calibration).
+- **Safer firmware updates.** A failed update restores the previous firmware
+  instead of leaving the device without any.
 
 ## What is not there
 

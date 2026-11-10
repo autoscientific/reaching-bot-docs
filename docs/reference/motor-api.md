@@ -138,12 +138,12 @@ The `x` and `y` coordinates are in pixels in the full camera frame, `size` is th
 
 ## Defaults
 
-For reference, these are the values the API server uses for the servo, camera, and pellet detection. They match the shipped ReachingBot configuration and you don't need to set them yourself. The pulse-width limits come from the device's `motor_type` in the [experiment config](config-file.md); the rest are firmware defaults.
+For reference, these are the values the API server uses for the servo, camera, and pellet detection. They match the shipped ReachingBot configuration and you don't need to set them yourself. The servo pulse widths come from the device's saved [servo calibration](../app/devices.md#servo-calibration) if it has one (firmware 3.2.0 and later), and otherwise from its `motor_type` in the [experiment config](config-file.md); the rest are firmware defaults.
 
 | Setting | Value | Description |
 | --- | --- | --- |
 | Port | `8001` | The port the server listens on |
-| Servo pulse width | `0.8`–`2.1` ms | Minimum and maximum pulse width, for the default `MG996R` motor. An `MG90S` device uses `0.9`–`2.1` ms |
+| Servo pulse width | `0.8`–`2.1` ms | Minimum and maximum pulse width for an uncalibrated device with the default `MG996R` motor. An uncalibrated `MG90S` device uses `0.9`–`2.1` ms |
 | Servo slow-return steps | `80` | Number of intermediate steps for `go_home_slowly` |
 | Servo step interval | `0.025` s | Time between slow-return steps |
 | Camera resolution | `512 × 320` | Frame size in pixels |

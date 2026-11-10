@@ -21,12 +21,11 @@ Animals:
   M-2271: Right
   M-2272: To be determined
 Devices:
-  ReachingBot1:
+  reachingbot-461d06b2:
     connection:
       transport: ssh
-      username: pi
+      username: your-device-username
       password: your-device-password
-    ip_address: 192.168.1.42
     camera_position: Opposite motor
     motor_type: MG996R
     shooting_mode: segmented
@@ -57,9 +56,9 @@ VideoDirectory: /path/to/project/ReachingBotVideos
 | `connection.transport` | `ssh` | |
 | `connection.username` | — | Device SSH user. Supplied to you by email |
 | `connection.password` | — | Device SSH password. Required |
-| `ip_address` | — | Optional. Written by the ReachingBot app and **ignored by Device Manager**, which reaches devices by hostname |
+| `ip_address` | — | Optional host or IP address. Left out when blank, in which case the ReachingBot app reaches the device at `<hostname>.local`. **Ignored by Device Manager**, which always reaches devices by hostname |
 | `camera_position` | `Opposite motor` | Or `Same side as motor`, which flips the frame |
-| `motor_type` | `MG996R` | Or `MG90S` for the legacy motors. Sets the servo pulse-width limits |
+| `motor_type` | `MG996R` | Or `MG90S` for the legacy motors. Sets the default servo positions, used until the device has a saved [servo calibration](../app/devices.md#servo-calibration) |
 | `shooting_mode` | `segmented` | Or `continuous` — see [Video recording modes](video-recording-modes.md) |
 | `fps` | `100` | Camera frame rate |
 | `y1_offset` | `0.61` | [Pellet-detection ROI](pellet-detection.md), top edge as a fraction of frame height |
@@ -76,8 +75,9 @@ the device falls back to its own defaults.
 
 ## What is *not* in the config
 
-Session parameters — trial count, time limit, pellet detection area and the
-through-beam sensor — are **not** saved in the config. In the ReachingBot app
+Session parameters — trial count, time limit and pellet detection area — are
+**not** saved in the config. Nor is a device's servo calibration, which is
+stored on the device itself. In the ReachingBot app
 they are set per run in the
 [Session parameters](../app/devices.md#session-parameters) panel.
 
