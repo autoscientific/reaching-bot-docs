@@ -45,7 +45,7 @@ One pass over the whole flow — from an empty builder to a saved config:
   <source src="../../assets/app/config-builder-walkthrough.mp4" type="video/mp4">
   Your browser does not support embedded video.
 </video>
-<figcaption>Naming the study, entering the device login, scanning and adding a ReachingBot, editing its settings, adding an animal, and saving.</figcaption>
+<figcaption>Naming the study, entering the device login, scanning for ReachingBots and adding two, adding the animals, saving, and opening the fleet in Devices.</figcaption>
 </figure>
 
 ## Step 1 — Name the experiment
@@ -122,7 +122,7 @@ point.
 
 <figure markdown>
 ![The per-device settings editor open on a device row](../assets/app/config-device-settings.png)
-<figcaption>Settings open on ReachingBot3. In Device Manager most of these were hardcoded; here they hang off the device that has them and can be changed at any point.</figcaption>
+<figcaption>Settings open on reachingbot-461d06b2. In Device Manager most of these were hardcoded; here they hang off the device that has them and can be changed at any point.</figcaption>
 </figure>
 
 See [Pellet detection](../reference/pellet-detection.md) for how to choose the

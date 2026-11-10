@@ -95,7 +95,7 @@ line of device output.
 
 <figure markdown>
 ![One device running a session while the other stays idle](../assets/app/devices-session-running.png)
-<figcaption>A session running on ReachingBot1 — animal, elapsed time, trial progress and the latest line of device output — while ReachingBot2 stays idle and ready.</figcaption>
+<figcaption>A session running on one device — animal, elapsed time, trial progress and the latest line of device output — while the other stays idle and ready.</figcaption>
 </figure>
 
 **Stop session** ends it gracefully — the device is interrupted rather than
@@ -103,6 +103,15 @@ killed, so the session closes down and its videos are written out.
 
 Sessions run per-device, so you can start several devices with different animals
 and watch them side by side.
+
+<figure markdown>
+<video controls muted playsinline preload="none"
+       poster="../../assets/app/devices-session-walkthrough-poster.jpg">
+  <source src="../../assets/app/devices-session-walkthrough.mp4" type="video/mp4">
+  Your browser does not support embedded video.
+</video>
+<figcaption>Loading a config, opening the session parameters, starting a session and watching its progress, switching views while it runs, and stopping it.</figcaption>
+</figure>
 
 ## Camera feed
 
@@ -136,6 +145,11 @@ calibrate button (the sliders icon, next to **Feed**) on a connected, idle
 device. The dialog starts the motor on the device and shows a diagram of each
 position.
 
+<figure markdown>
+![The servo calibration dialog on an uncalibrated device](../assets/app/devices-servo-calibration.png)
+<figcaption>A device that has not been calibrated yet, on its motor type's defaults. Each diagram shows where that position puts the spoon; the slider between them sets both.</figcaption>
+</figure>
+
 - Drag either handle on the slider, or use the nudge buttons, to move a position.
   The arm moves as you go, so you can watch it on the device. Rest always stays
   below Present.
@@ -146,6 +160,15 @@ position.
 - **Use defaults** sets both positions back to the defaults for the device's
   motor type. Nothing changes on the device until you save.
 - **Close** stops the motor and releases the servo.
+
+<figure markdown>
+<video controls muted playsinline preload="none"
+       poster="../../assets/app/servo-calibration-walkthrough-poster.jpg">
+  <source src="../../assets/app/servo-calibration-walkthrough.mp4" type="video/mp4">
+  Your browser does not support embedded video.
+</video>
+<figcaption>Opening calibration, nudging both positions, saving them to the device, running a test stroke, and closing.</figcaption>
+</figure>
 
 Sessions and the [motor API](../reference/motor-api.md) use the saved positions.
 A device that has never been calibrated uses the defaults for its
@@ -200,6 +223,11 @@ before the swap in step 4.
 A log below the fleet shows each device's progress. When it finishes, it shows
 the installed version and the one it replaced, and the new version appears on
 the card.
+
+<figure markdown>
+![The firmware update log after updating two devices](../assets/app/devices-firmware-update.png)
+<figcaption>Both devices updated. The log names the version installed and the one it replaced.</figcaption>
+</figure>
 
 ## Deleting device data
 
