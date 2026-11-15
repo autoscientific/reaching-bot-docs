@@ -124,6 +124,14 @@ When a pellet is present:
     "y": 248.1,
     "size": 387.0,
     "timestamp": 1715000000.123
+  },
+  "detection": {
+    "min_area": 300,
+    "max_area": 500,
+    "y1_offset": 0.61,
+    "y2_offset": 0.98,
+    "x1_offset": 0.6,
+    "x2_offset": 0.875
   }
 }
 ```
@@ -131,14 +139,48 @@ When a pellet is present:
 When no pellet is detected:
 
 ```json
-{ "status": "ok", "dispensed": false }
+{
+  "status": "ok",
+  "dispensed": false,
+  "detection": {
+    "min_area": 300,
+    "max_area": 500,
+    "y1_offset": 0.61,
+    "y2_offset": 0.98,
+    "x1_offset": 0.6,
+    "x2_offset": 0.875
+  }
+}
 ```
 
-The `x` and `y` coordinates are in pixels in the full camera frame, `size` is the blob area in pixels, and `timestamp` is the Unix timestamp when the frame was captured.
+The `x` and `y` coordinates are in pixels in the full camera frame, `size` is the blob area in pixels, and `timestamp` is the Unix timestamp when the frame was captured. `detection` shows the settings this check ran with.
+
+#### Detection settings
+
+By default, detection uses the pellet size from the [session parameters](../app/devices.md#session-parameters) in the ReachingBot app (for example 100–200 px for 20 mg pellets) and the device's region of interest (ROI) from its config, as they were when you clicked **Start API server**. To change them, update the session parameters and restart the server.
+
+You can also override any of them for a single request with these optional query parameters. Any you leave out keep their default.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `min_area` | whole number | Smallest blob area, in pixels, that counts as a pellet |
+| `max_area` | whole number | Largest blob area, in pixels, that counts as a pellet |
+| `y1_offset` | number, 0–1 | ROI top edge, as a fraction of frame height |
+| `y2_offset` | number, 0–1 | ROI bottom edge, as a fraction of frame height |
+| `x1_offset` | number, 0–1 | ROI left edge, as a fraction of frame width |
+| `x2_offset` | number, 0–1 | ROI right edge, as a fraction of frame width |
+
+```bash
+curl "http://<reachingbot-host>:8001/pellet/detected?min_area=100&max_area=200"
+```
+
+An override that isn't a number, is out of range, or leaves the bounds the wrong way round (for example `max_area` below `min_area`) returns `400` with `"status": "error"`, and no frame is captured.
+
+Devices running firmware v3.2.2 or older ignore these parameters and don't return `detection`.
 
 ## Defaults
 
-For reference, these are the values the API server uses for the servo, camera, and pellet detection. They match the shipped ReachingBot configuration and you don't need to set them yourself. The servo pulse widths come from the device's saved [servo calibration](../app/devices.md#servo-calibration) if it has one (firmware 3.2.0 and later), and otherwise from its `motor_type` in the [experiment config](config-file.md); the rest are firmware defaults.
+For reference, these are the values the API server uses for the servo, camera, and pellet detection. They match the shipped ReachingBot configuration and you don't need to set them yourself. The servo pulse widths come from the device's saved [servo calibration](../app/devices.md#servo-calibration) if it has one (firmware 3.2.0 and later), and otherwise from its `motor_type` in the [experiment config](config-file.md); the rest are firmware defaults. When the ReachingBot app starts the server, the pellet blob area and detection ROI come from the session parameters and the device's config instead (see [Detection settings](#detection-settings)); the values below apply when those aren't set.
 
 | Setting | Value | Description |
 | --- | --- | --- |
