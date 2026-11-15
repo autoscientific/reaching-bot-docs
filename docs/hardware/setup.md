@@ -17,6 +17,20 @@ You can also connect your ReachingBot directly to your PC using the supplied USB
 
 ![Group 9.png](../assets/Group_9.png)
 
+### Connecting with a PoE switch
+
+If you're using a PoE (Power over Ethernet) switch instead of the USB hub, a single Ethernet cable carries both power and data from the switch to each ReachingBot. A PoE splitter next to each ReachingBot separates that into power and data for the Raspberry Pi:
+
+1. Plug the PoE switch into a power outlet using its power supply.
+2. Run an Ethernet cable from one of the switch's PoE ports to the input of each ReachingBot's PoE splitter.
+3. Plug the splitter's **USB-C lead** into the Raspberry Pi's USB-C power port.
+4. Plug the splitter's **Ethernet lead** into the Raspberry Pi's Ethernet port.
+5. Connect your computer to any free port on the switch.
+
+The detail at the bottom of the diagram shows where the two splitter leads plug into the Raspberry Pi.
+
+![Connecting ReachingBots to a PoE switch](../assets/poe-connection-layout.svg)
+
 ## Before you begin
 
 Your ReachingBot may arrive disassembled for safe travel. Please screw together the components indicated by the red arrows in the image above before continuing.
