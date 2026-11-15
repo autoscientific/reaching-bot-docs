@@ -1,6 +1,8 @@
 # ReachingBot API
 
-The ReachingBot API lets you drive a ReachingBot directly from your own scripts, without going through ReachingBot Device Manager. It's an HTTP server that runs on the device and exposes the same hardware actions RBDM uses internally — dispensing pellets, returning the servo to its home position, and checking whether a pellet is currently on the pedestal.
+The ReachingBot API lets you drive a ReachingBot directly from your own scripts. It's an HTTP server that runs on the device and exposes the same hardware actions the desktop applications use internally — dispensing pellets, returning the servo to its home position, and checking whether a pellet is currently on the pedestal.
+
+The server is part of the device firmware, so the endpoints below are identical whichever application you start it from — the [ReachingBot app](../app/index.md) or the legacy [Device Manager](../rbdm/getting-started.md). Only the way you start it differs.
 
 Use it when you want to:
 
@@ -10,11 +12,30 @@ Use it when you want to:
 
 ## Starting the server
 
-You start and stop the API server from within RBDM — there's no need to access the ReachingBot directly.
+You start and stop the API server from the desktop application — there's no need to access the ReachingBot directly.
 
-1. Open the **Devices** tab in ReachingBot Device Manager and connect to your devices as you normally would.
-2. Click **Start API Server**. The button changes to **Stop API Server** while the server is running, and an output panel appears below showing each request as it arrives.
-3. To shut the server down, click **Stop API Server**.
+=== "ReachingBot app"
+
+    1. Open the [Devices](../app/devices.md) view and connect to your devices as
+       you normally would.
+    2. Click **Start API server** in the toolbar. It starts on **every**
+       connected device, and an **API server log** panel appears showing each
+       request as it arrives.
+    3. To shut the servers down, click **Stop API server**.
+
+    A device serving the API reads **API server running** on its card and cannot
+    run a session until the server is stopped.
+
+    <figure markdown>
+    ![Two devices serving the motor API, with the request log below them](../assets/app/devices-api-server.png)
+    <figcaption>Both devices serving the API. The log below the fleet shows each request as it arrives, tagged with the device that answered it.</figcaption>
+    </figure>
+
+=== "Device Manager (legacy)"
+
+    1. Open the **Devices** tab in ReachingBot Device Manager and connect to your devices as you normally would.
+    2. Click **Start API Server**. The button changes to **Stop API Server** while the server is running, and an output panel appears below showing each request as it arrives.
+    3. To shut the server down, click **Stop API Server**.
 
 While the server is running, your PC can reach it on port `8001` of each connected device, at `http://<reachingbot-host>:8001`. To explore the endpoints interactively, open the Swagger UI in a browser:
 
@@ -136,7 +157,7 @@ The `x` and `y` coordinates are in pixels in the full camera frame, `size` is th
 
 #### Detection settings
 
-By default, detection uses the pellet size from the session parameters in RBDM (for example 100–200 px for 20 mg pellets) and the device's region of interest (ROI) from its config, as they were when you clicked **Start API Server**. To change them, update the session parameters and restart the server.
+By default, detection uses the pellet size from the [session parameters](../app/devices.md#session-parameters) in the ReachingBot app (for example 100–200 px for 20 mg pellets) and the device's region of interest (ROI) from its config, as they were when you clicked **Start API server**. To change them, update the session parameters and restart the server.
 
 You can also override any of them for a single request with these optional query parameters. Any you leave out keep their default.
 
@@ -159,12 +180,12 @@ Devices running firmware v3.2.2 or older ignore these parameters and don't retur
 
 ## Defaults
 
-For reference, these are the values the API server uses for the servo, camera, and pellet detection. They match the shipped ReachingBot configuration and you don't need to set them yourself. When RBDM starts the server, the pellet blob area and detection ROI come from the session parameters and the device's config instead (see [Detection settings](#detection-settings)); the values below apply when those aren't set.
+For reference, these are the values the API server uses for the servo, camera, and pellet detection. They match the shipped ReachingBot configuration and you don't need to set them yourself. The servo pulse widths come from the device's saved [servo calibration](../app/devices.md#servo-calibration) if it has one (firmware 3.2.0 and later), and otherwise from its `motor_type` in the [experiment config](config-file.md); the rest are firmware defaults. When the ReachingBot app starts the server, the pellet blob area and detection ROI come from the session parameters and the device's config instead (see [Detection settings](#detection-settings)); the values below apply when those aren't set.
 
 | Setting | Value | Description |
 | --- | --- | --- |
 | Port | `8001` | The port the server listens on |
-| Servo pulse width | `0.8`–`2.1` ms | Minimum and maximum pulse width |
+| Servo pulse width | `0.8`–`2.1` ms | Minimum and maximum pulse width for an uncalibrated device with the default `MG996R` motor. An uncalibrated `MG90S` device uses `0.9`–`2.1` ms |
 | Servo slow-return steps | `80` | Number of intermediate steps for `go_home_slowly` |
 | Servo step interval | `0.025` s | Time between slow-return steps |
 | Camera resolution | `512 × 320` | Frame size in pixels |

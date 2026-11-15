@@ -26,3 +26,28 @@
   --md-primary-bg-color: #ffffff;
   --md-primary-bg-color--light: #ffffffb3;
 }
+
+/* Screenshots and walkthroughs. The app is light-on-light, so a border keeps
+   the frame from bleeding into the page. */
+.md-typeset figure img,
+.md-typeset img.screenshot {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+}
+
+.md-typeset figure {
+  width: 100%;
+}
+
+.md-typeset figure video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+}
+
+.md-typeset figcaption {
+  max-width: none;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
