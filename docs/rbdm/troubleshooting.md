@@ -1,5 +1,9 @@
 # Troubleshooting
 
+!!! info "Legacy application"
+    This page covers **ReachingBot Device Manager**, the legacy app. For the
+    current application see the [ReachingBot app](../app/index.md).
+
 1. ***I’ve updated the device drivers, but when I click “Scan Devices”, no devices are found***
 
     This may be down to you computer’s firewall configuration, try again but having disabled your firewall protections.
