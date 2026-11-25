@@ -6,6 +6,8 @@
 #
 # base_url is the CloudFront distribution the installers are served from.
 # Each release's files are expected at {base_url}/{version}/{filename}.
+# Everything under /app/ is password protected (HTTP Basic Auth on the
+# distribution; see infra/downloads/README.md in reaching-bot-app).
 
 base_url: https://d2k8b59n1pj325.cloudfront.net/app
 

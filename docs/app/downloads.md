@@ -7,6 +7,12 @@ Before installing, read [Install](install.md) — it covers the macOS and Window
 first-launch prompts, which you will hit, and the platform requirements
 (**Apple silicon and macOS 13 or later**; there is no Intel Mac build).
 
+!!! info "Downloads need a username and password"
+    The installers are available to ReachingBot customers only. When you click a
+    download, your browser asks for a username and password: use the ones
+    Autoscientific sent you. If you don't have them, or they no longer work,
+    email [info@autoscientific.co.uk](mailto:info@autoscientific.co.uk).
+
 <!-- app-releases -->
 
 ## Which file
