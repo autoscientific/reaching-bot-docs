@@ -12,7 +12,25 @@
 base_url: https://d2k8b59n1pj325.cloudfront.net/app
 
 # Newest first. The release job inserts at the top.
-releases: []
+releases:
+  - version: "0.1.0"
+    date: 2026-11-25
+    files:
+      - label: "macOS (Apple silicon)"
+        filename: "ReachingBot_0.1.0_aarch64.dmg"
+        size: "60 MB"
+      - label: "Windows installer (.exe)"
+        filename: "ReachingBot_0.1.0_x64-setup.exe"
+        size: "45 MB"
+      - label: "Windows installer (.msi)"
+        filename: "ReachingBot_0.1.0_x64_en-US.msi"
+        size: "59 MB"
+      - label: "Linux x86-64 (.deb)"
+        filename: "ReachingBot_0.1.0_amd64.deb"
+        size: "77 MB"
+      - label: "Linux x86-64 (AppImage)"
+        filename: "ReachingBot_0.1.0_amd64.AppImage"
+        size: "141 MB"
 # - version: 0.0.0
 #   date: 2026-01-01
 #   notes: First public build with in-app scoring.
