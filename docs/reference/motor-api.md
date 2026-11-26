@@ -1,6 +1,6 @@
 # ReachingBot API
 
-The ReachingBot API lets you drive a ReachingBot directly from your own scripts. It's an HTTP server that runs on the device and exposes the same hardware actions the desktop applications use internally — dispensing pellets, returning the servo to its home position, and checking whether a pellet is currently on the pedestal.
+The ReachingBot API lets you drive a ReachingBot directly from your own scripts. It's an HTTP server that runs on the device and exposes the same hardware actions the desktop applications use internally — dispensing pellets, returning the servo to its home position, checking whether a pellet is currently on the pedestal, and switching the lights on and off.
 
 The server is part of the device firmware, so the endpoints below are identical whichever application you start it from — the [ReachingBot app](../app/index.md) or the legacy [Device Manager](../rbdm/getting-started.md). Only the way you start it differs.
 
@@ -65,7 +65,7 @@ curl -X POST http://<reachingbot-host>:8001/motor/get_pellet
 
 `POST /motor/go_home`
 
-Returns the servo to its home position immediately.
+Returns the servo to its home position in one quick motion (about half a second), from wherever it is. The jolt can flick a pellet out of the spoon, so use it to reset the arm rather than mid-trial.
 
 ```bash
 curl -X POST http://<reachingbot-host>:8001/motor/go_home
@@ -178,6 +178,58 @@ An override that isn't a number, is out of range, or leaves the bounds the wrong
 
 Devices running firmware v3.2.2 or older ignore these parameters and don't return `detection`.
 
+### Lights
+
+The LED panel lights the slot so the camera can see the pellet. The server starts with the lights **off**. Each lights endpoint returns the panel's state: `on` is `true` while the lights are on, and `brightness` runs from `0` (dark) to `1` (full).
+
+These endpoints need firmware v3.5.0 or later. If the server can't reach the LED panel, they return `500` with `"detail": "Lights are not available"`; the arm and camera endpoints keep working.
+
+#### Check the lights
+
+`GET /lights`
+
+Reports whether the lights are on and how bright they are. Nothing changes.
+
+```bash
+curl http://<reachingbot-host>:8001/lights
+```
+
+```json
+{ "status": "ok", "on": false, "brightness": 1.0 }
+```
+
+#### Turn the lights on
+
+`POST /lights/on`
+
+Switches every LED on the panel on. To change the brightness, send a JSON body with a `brightness` from `0` to `1`. The new brightness is kept for later requests until you change it again. Leave the body out to keep the current brightness. Sending this while the lights are already on just dims or brightens them.
+
+```bash
+curl -X POST http://<reachingbot-host>:8001/lights/on \
+  -H "Content-Type: application/json" \
+  -d '{"brightness": 0.5}'
+```
+
+```json
+{ "status": "ok", "action": "on", "on": true, "brightness": 0.5 }
+```
+
+A body that isn't a JSON object, or a `brightness` that isn't a number from `0` to `1`, returns `400` with `"status": "error"`, and the lights don't change.
+
+#### Turn the lights off
+
+`POST /lights/off`
+
+Switches every LED on the panel off. The brightness is remembered, so the next `POST /lights/on` comes back at the same level.
+
+```bash
+curl -X POST http://<reachingbot-host>:8001/lights/off
+```
+
+```json
+{ "status": "ok", "action": "off", "on": false, "brightness": 0.5 }
+```
+
 ## Defaults
 
 For reference, these are the values the API server uses for the servo, camera, and pellet detection. They match the shipped ReachingBot configuration and you don't need to set them yourself. The servo pulse widths come from the device's saved [servo calibration](../app/devices.md#servo-calibration) if it has one (firmware 3.2.0 and later), and otherwise from its `motor_type` in the [experiment config](config-file.md); the rest are firmware defaults. When the ReachingBot app starts the server, the pellet blob area and detection ROI come from the session parameters and the device's config instead (see [Detection settings](#detection-settings)); the values below apply when those aren't set.
@@ -193,3 +245,4 @@ For reference, these are the values the API server uses for the servo, camera, a
 | Pellet blob area | `300`–`500` px | Minimum and maximum area for pellet detection |
 | Detection ROI (x) | `0.60`–`0.875` | Left/right edges as fractions of frame width |
 | Detection ROI (y) | `0.61`–`0.98` | Top/bottom edges as fractions of frame height |
+| Light brightness | `1.0` | Brightness the lights come on at, from `0` to `1`, until a request changes it (firmware v3.5.0 and later) |
